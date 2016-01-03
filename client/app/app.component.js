@@ -1,7 +1,8 @@
-import template from './app.html!text';
-import './app.css!';
+import template from './app.component.html!text';
+import './app.component.css!';
 
-let appComponent = ()=>{
+// minimal directive/component definition
+let appComponent = () => {
 	return {
 		template, // because we have a variable name template we can use the shorcut here
 		restrict: 'E'
