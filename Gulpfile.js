@@ -79,7 +79,7 @@ gulp.task('build', function() {
 });
 
 gulp.task('component', function(){
-	var cap = function(val){
+	var cap = function(val) {
 		return val.charAt(0).toUpperCase() + val.slice(1);
 	};
 

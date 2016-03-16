@@ -1,11 +1,13 @@
 import angular from 'angular';
 import 'angular-ui-router';
+
 import homeComponent from './home.component';
 
 let homeModule = angular.module('home', [
 	'ui.router'
-])
-.config(($stateProvider, $urlRouterProvider) => {
+]);
+
+homeModule.config(($stateProvider, $urlRouterProvider) => {
 	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
@@ -13,7 +15,8 @@ let homeModule = angular.module('home', [
 			url: '/',
 			template: '<home></home>'
 		});
-})
-.directive('home', homeComponent);
+});
+
+homeModule.directive('home', homeComponent);
 
 export default homeModule;
