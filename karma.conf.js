@@ -4,7 +4,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -28,20 +28,40 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [],
-
+    /*
     jspm: {
       // Edit this to your needs
       config: 'jspm.config.js',
-      loadFiles: ['client/app/**/*.spec.js'],
+      loadFiles: ['client/app/ * * / *.spec.js'],
+      serveFiles: [
+        'client/app/* * /*.js',
+        'client/app/* * /*.html',
+        'client/app/* * /*.css'
+      ],
+      urlRoot: './'
+    },
+    */
+    jspm: {
+      // Edit this to your needs
+      config: 'jspm.config.js',
+      packages: 'client/jspm_packages',
+      loadFiles: ['client/app/**/*.spec.js'], //, 'client/js/jspm_packages/es6-module-loader.js'],
       serveFiles: [
         'client/app/**/*.js',
         'client/app/**/*.html',
         'client/app/**/*.css'
-      ]
+      ],
+      paths: {
+        'app/*': 'base/client/app/*',
+        'github:*': 'base/client/jspm_packages/github/*',
+        'npm:*': 'base/client/jspm_packages/npm/*'
+      },
+      urlRoot: './'
     },
 
     proxies: {
       // '/jspm_packages': '/base/jspm_packages',
+      '/client': '/base/client'
       // '/jspm.config.js': '/base/jspm.config.js'
     },
 
